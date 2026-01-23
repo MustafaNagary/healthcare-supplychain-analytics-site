@@ -16,63 +16,244 @@
       <a class="brand" href="index.html">
         <img src="images/logo.png" alt="Data 14 Logo" class="header-logo">
       </a>
-      <nav class="nav"></nav>
+      <nav class="nav">
+        <a href="index.html#services" class="nav-strong">Services</a>
+        <a href="index.html#work" class="nav-strong">Work</a>
+        <a href="https://calendar.app.google/YaRjgie3NBDr8Vaf8" class="nav-cta" target="_blank" rel="noopener">Book a Call</a>
+      </nav>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
-    <div class="mobile-nav" id="mobileNav"></div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="https://calendar.app.google/YaRjgie3NBDr8Vaf8" target="_blank" rel="noopener">Book a Call</a>
+    </div>
   </header>
 
   <main>
-    <section class="section">
-      <div class="container">
-        <h1>Healthcare Supply Chain Analytics</h1>
-        <p class="muted">Operational clarity across inventory, procurement, and usage — built for healthcare teams who need reliable, decision-ready insight.</p>
-      </div>
-    </section>
+    <section class="hero-map section">
+  <div class="container">
+    <div class="hero-map__header">
+      <h2 class="hero-map__title">Healthcare Supply Chain Analytics that built End-to-End</h2>
+      <p class="hero-map__subtitle">We use data to build supply chain systems that improve performance, not just reporting. </p>
+      <p class="hero-map__subtitle">By following our data-driven supply chain roadmap, clients gain full visibility and a reporting system that drives action. </p>
+    </div>
 
-    <section class="section section-alt">
-      <div class="container">
-        <h2>What this solves</h2>
-        <p>Most hospitals have the data but not the control. This track standardizes items, aligns metrics, and turns supply chain activity into performance insight your team can trust.</p>
-        <ul>
-          <li>Item master cleanup and standardization</li>
-          <li>Inventory utilization and turns visibility</li>
-          <li>Procurement performance by category and supplier</li>
-          <li>Usage, waste, and cost variance monitoring</li>
-        </ul>
-      </div>
-    </section>
+    <div class="hero-map__wrap">
+      <!-- Inline SVG (crisp + interactive) -->
+      <svg
+        id="routeMap"
+        class="route-map"
+        viewBox="0 0 1600 720"
+        role="img"
+        aria-label="Supply chain analytics journey map"
+      >
+        <defs>
+          <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#003d88"></stop>
+            <stop offset="1" stop-color="#FCBB72"></stop>
+          </linearGradient>
 
-    <section class="section">
-      <div class="container">
-        <h2>Key deliverables</h2>
-        <ul>
-          <li>Supply Chain Performance Dashboard</li>
-          <li>Consumption and Cost Variance Reporting</li>
-          <li>Inventory &amp; Stock Optimization Views</li>
-          <li>Procurement &amp; Vendor Performance KPIs</li>
-          <li>SOPs for ongoing item governance</li>
-        </ul>
-      </div>
-    </section>
+          <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#003d88" flood-opacity="0.14"/>
+          </filter>
 
-    <section class="section section-alt">
-      <div class="container">
-        <h2>Typical outcomes</h2>
-        <ul>
-          <li>Reduced stock-outs and overstocks through clearer consumption trends</li>
-          <li>Faster cycle time from PO to usage visibility</li>
-          <li>Improved pricing leverage via supplier comparison</li>
-          <li>Better compliance with item creation standards</li>
-        </ul>
-        <a href="#" class="cta-button">Book a Call</a>
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Route -->
+        <path
+          id="routePath"
+          d="
+            M 120 220
+            L 1360 220
+            Q 1500 370 1360 520
+            L 150 520
+          "
+          fill="none"
+          stroke="#D9DEE6"
+          stroke-width="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <!-- a thinner inner highlight line -->
+        <path
+          d="
+            M 120 220
+            L 1360 220
+            Q 1500 370 1360 520
+            L 150 520
+          "
+          fill="none"
+          stroke="#EEF1F6"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          opacity="0.95"
+        />
+
+        <!-- Train (simple, minimal icon) -->
+        <g id="train" filter="url(#softShadow)">
+          <!-- body -->
+          <rect x="30" y="182" rx="18" ry="18" width="150" height="56" fill="#003d88" opacity="0.12"></rect>
+          <path d="M 40 190 H 160 C 182 190 195 204 195 220 C 195 236 182 250 160 250 H 40 Z" fill="#003d88"/>
+          <path d="M 40 190 H 150 C 168 190 178 199 182 210 C 170 217 156 222 140 222 H 40 Z" fill="#FCBB72" opacity="0.85"/>
+          <!-- windows -->
+          <rect x="62" y="205" width="22" height="14" rx="4" fill="#EEF1F6" opacity="0.9"></rect>
+          <rect x="90" y="205" width="22" height="14" rx="4" fill="#EEF1F6" opacity="0.9"></rect>
+          <rect x="118" y="205" width="22" height="14" rx="4" fill="#EEF1F6" opacity="0.9"></rect>
+          <!-- nose -->
+          <path d="M 160 190 C 186 190 200 205 200 220 C 200 235 186 250 160 250 Z" fill="#003d88"/>
+          <path d="M 160 195 C 180 195 191 207 191 220 C 191 233 180 245 160 245 Z" fill="#EEF1F6" opacity="0.14"/>
+        </g>
+
+        <!-- Stations (clickable groups) -->
+        <!-- Top row: 1,2,3,4 -->
+        <g class="station" data-station="1" transform="translate(260,220)">
+          <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+          <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+          <circle r="22" fill="#003d88"></circle>
+          <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">1</text>
+          <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+            <tspan x="0" dy="0">Clinical Demand &amp;</tspan>
+            <tspan x="0" dy="20">Usage Visibility</tspan>
+          </text>
+          <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+            <tspan x="0" dy="0">Understand what’s driving usage</tspan>
+            <tspan x="0" dy="18">(by unit, service, and case mix)</tspan>
+          </text>
+        </g>
+
+        <g class="station" data-station="2" transform="translate(560,220)">
+          <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+          <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+          <circle r="22" fill="#003d88"></circle>
+          <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">2</text>
+          <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+            <tspan x="0" dy="0">Item Master &amp;</tspan>
+            <tspan x="0" dy="20">Catalog Standardization</tspan>
+          </text>
+          <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+            <tspan x="0" dy="0">Fix duplicates &amp; item data</tspan>
+            <tspan x="0" dy="18">inconsistencies</tspan>
+          </text>
+        </g>
+
+        <g class="station" data-station="3" transform="translate(860,220)">
+          <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+          <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+          <circle r="22" fill="#003d88"></circle>
+          <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">3</text>
+          <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+            <tspan x="0" dy="0">Sourcing &amp; Supplier</tspan>
+            <tspan x="0" dy="20">Strategy</tspan>
+          </text>
+          <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+            <tspan x="0" dy="0">Monitor vendor spend</tspan>
+            <tspan x="0" dy="18">&amp; supply risk</tspan>
+          </text>
+        </g>
+
+        <g class="station" data-station="4" transform="translate(1260,220)">
+          <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+          <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+          <circle r="22" fill="#003d88"></circle>
+          <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">4</text>
+          <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+            <tspan x="0" dy="0">Contract Control &amp;</tspan>
+            <tspan x="0" dy="20">Purchase Compliance</tspan>
+          </text>
+          <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+            <tspan x="0" dy="0">Score &amp; manage contract leakage</tspan>
+          </text>
+        </g>
+
+        <!-- Bottom row (right → left): 5,6,7,8 -->
+        <g class="station" data-station="5" transform="translate(1320,520)">
+          <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+          <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+          <circle r="22" fill="#003d88"></circle>
+          <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">5</text>
+          <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+            <tspan x="0" dy="0">Procurement Flow</tspan>
+            <tspan x="0" dy="20">(Req → PO → Receiving)</tspan>
+          </text>
+          <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+            <tspan x="0" dy="0">Identify &amp; fix purchasing</tspan>
+            <tspan x="0" dy="18">bottlenecks</tspan>
+          </text>
+        </g>
+
+        <g class="station" data-station="6" transform="translate(980,520)">
+          <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+          <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+          <circle r="22" fill="#003d88"></circle>
+          <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">6</text>
+          <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+            <tspan x="0" dy="0">Inventory Control</tspan>
+            <tspan x="0" dy="20">&amp; Optimization</tspan>
+          </text>
+          <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+            <tspan x="0" dy="0">Reduce stockouts +</tspan>
+            <tspan x="0" dy="18">optimize inventory</tspan>
+          </text>
+        </g>
+
+        <g class="station" data-station="7" transform="translate(660,520)">
+          <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+          <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+          <circle r="22" fill="#003d88"></circle>
+          <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">7</text>
+          <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+            <tspan x="0" dy="0">Internal Distribution</tspan>
+            <tspan x="0" dy="20">&amp; Department Replenishment</tspan>
+          </text>
+          <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+            <tspan x="0" dy="0">Improve internal</tspan>
+            <tspan x="0" dy="18">movement of supplies</tspan>
+          </text>
+        </g>
+
+        <g class="station" data-station="8" transform="translate(360,520)">
+          <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+          <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+          <circle r="22" fill="#003d88"></circle>
+          <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">8</text>
+          <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+            <tspan x="0" dy="0">Service Levels, Waste</tspan>
+            <tspan x="0" dy="20">&amp; Returns Recovery</tspan>
+          </text>
+          <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+            <tspan x="0" dy="0">Track waste risk</tspan>
+            <tspan x="0" dy="18">+ returns recovery</tspan>
+          </text>
+        </g>
+      </svg>
+
+      <!-- Card / tooltip (HTML overlay) -->
+      <div id="stationCard" class="station-card" aria-hidden="true">
+        <div class="station-card__meta">
+          <span id="cardKicker" class="station-card__kicker">Station</span>
+          <button id="cardClose" class="station-card__close" aria-label="Close">✕</button>
+        </div>
+        <h3 id="cardTitle" class="station-card__title">Title</h3>
+        <p id="cardText" class="station-card__text">Description</p>
       </div>
+    </div>
+  </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer-row">
-      <p class="muted">© <span id="year"></span> Data 14</p>
+      <p class="muted">© 2026 data14. All rights reserved.</p>
     </div>
   </footer>
 

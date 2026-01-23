@@ -41,7 +41,7 @@ function openModal(detailsKey) {
   content.forEach(item => {
     html += `<h3>${item.title}</h3><p>${item.description}</p>`;
   });
-  html += '<div class="expanded-cta-wrap"><a href="#" class="expanded-cta-button">Book a Call</a></div>';
+  html += '<div class="expanded-cta-wrap"><a href="https://calendar.app.google/YaRjgie3NBDr8Vaf8" class="expanded-cta-button" target="_blank" rel="noopener">Book a Call</a></div>';
   
   modalBody.innerHTML = html;
   modal.style.display = 'flex';
@@ -102,6 +102,161 @@ if (deliveredTrack) {
 
   window.addEventListener('resize', () => centerCard(currentIndex));
   centerCard(currentIndex);
+}
+
+// Healthcare supply chain station map
+const routeMap = document.getElementById("routeMap");
+if (routeMap) {
+  const STATIONS = {
+    1: {
+      title: "Clinical Demand and Usage Visibility",
+      offers: [
+        "Track usage by department/cost center, service line, and therapy/procedure type",
+        "Explain variance using patient volume, CMI/acuity, and scheduling patterns",
+        "Detect shifts from physician preference changes, substitutions, and documentation gaps",
+        "Align teams on what to measure and where to capture it before standardizing the catalog"
+      ],
+      note: "This step builds clinical buy-in early ... so standardization reflects real usage patterns instead of forcing a model that teams won’t follow."
+    },
+    2: {
+      title: "Item Master and Catalog Standardization (Foundation)",
+      offers: [
+        "Identify duplicate items using match logic (description similarity, packaging, manufacturer, UoM)",
+        "Fix UoM issues (each vs box vs case) to prevent false usage and inventory calculations",
+        "Standardize categories and item hierarchy (med/surg, clinical, implant, pharmacy-adjacent, etc.)",
+        "Define required fields, naming rules, mapping logic, and approval workflow for new items",
+        "Monitor catalog health (new items, missing fields, category drift, inactive items)"
+      ],
+      note: "This is the station that stops the entire system from breaking later."
+    },
+    3: {
+      title: "Sourcing and Supplier Strategy",
+      offers: [
+        "Vendor spend analytics by category, facility, service line, and GL alignment",
+        "Price variance logic: compare contract price vs paid price vs historical price",
+        "Supplier performance monitoring using lead-time stability, fill rate, backorder frequency",
+        "Vendor concentration + supply risk: identify “single points of failure” for critical categories"
+      ],
+      note: "This is where sourcing is turned into measurable performance, not anecdotes."
+    },
+    4: {
+      title: "Contract Control and Purchase Compliance",
+      offers: [
+        "Contract compliance scorecards (contract vs non-contract, compliant vendors, compliant items)",
+        "Detect contract leakage patterns like: same item bought from multiple vendors; off-contract substitutions; mismatched catalog mapping causing incorrect “non-contract” flags",
+        "Build an “action list” dashboard: top leakage categories; high-frequency offenders (items + departments); savings targets based on historical run-rate"
+      ],
+      note: "This station becomes a “savings engine” once master data is cleaned."
+    },
+    5: {
+      title: "Procurement Flow (Req → PO → Receiving)",
+      offers: [
+        "Cycle time tracking across the full purchasing lifecycle: requisition approval time; PO creation time; vendor confirmation time; receiving time + put-away delays",
+        "Bottleneck analytics by role/team/location (ex: approval queues, receiving backlog)",
+        "Exception monitoring: partial receipts; missing invoices; price mismatches; emergency buys outside the normal workflow"
+      ],
+      note: "This is where “process drag” is reduced with actual data."
+    },
+    6: {
+      title: "Inventory Control and Optimization",
+      offers: [
+        "Core inventory reporting: days on hand; usage velocity; ABC classification + slow-mover detection; stock distribution across storerooms and departments",
+        "Root cause analysis for stockouts/overstock: PAR levels misaligned with demand; case pack issues driving over-ordering; poor UoM conversion causing distorted “on hand” values",
+        "Expiration prediction: estimate “time-to-deplete” using historical consumption rate; flag items where expiry date < expected depletion date; generate “at-risk” inventory worklist",
+        "Optimization recommendations: PAR recalibration; reorder point tuning; transfer suggestions between locations"
+      ],
+      note: "This station is considered the “control tower” and the biggest value station."
+    },
+    7: {
+      title: "Internal Distribution and Department Replenishment",
+      offers: [
+        "Track internal movement: issues, transfers, case cart usage, department replenishment patterns",
+        "Identify waste patterns: excessive pulling compared to patient volume; frequent transfers due to wrong stocking locations; high variance units needing standardization",
+        "Support better stocking strategy: align supplies to actual usage by unit/service; reduce unnecessary movement and “hidden inventory pockets”"
+      ],
+      note: "This is where supply chain becomes operational performance."
+    },
+    8: {
+      title: "Service Levels + Waste + Returns Recovery",
+      offers: [
+        "Service level visibility: fill rate and backorder behavior; critical item availability monitoring; vendor vs internal-driven delays",
+        "Waste + expiration reporting: expired items by department/category; non-moving inventory exceeding thresholds; usage drops indicating upcoming waste risk",
+        "Returns/credits analytics: returns volume trends; credit capture gaps; return eligibility tracking (time windows / vendor rules)",
+        "Recovery worklists: “consume first” list; transfer-out recommendations; return candidates prioritized by value and urgency"
+      ],
+      note: "This station closes the loop and protects cost + availability."
+    }
+  };
+
+  const card = document.getElementById("stationCard");
+  const cardKicker = document.getElementById("cardKicker");
+  const cardTitle = document.getElementById("cardTitle");
+  const cardText = document.getElementById("cardText");
+  const cardClose = document.getElementById("cardClose");
+
+  const openCard = (stationId, clientX, clientY) => {
+    const data = STATIONS[stationId];
+    if (!data || !card) return;
+
+    cardKicker.textContent = `${stationId}`;
+    cardTitle.textContent = data.title;
+    const offerItems = data.offers.map(item => `<li>${item}</li>`).join("");
+    cardText.innerHTML = `
+      <p class="station-card__intro">What Data 14 can offer:</p>
+      <ul class="station-card__list">${offerItems}</ul>
+      <p class="station-card__note">${data.note}</p>
+    `;
+
+    const wrap = routeMap.closest(".hero-map__wrap");
+    if (!wrap) return;
+    const wrapRect = wrap.getBoundingClientRect();
+
+    routeMap.querySelectorAll(".station.is-active").forEach(el => el.classList.remove("is-active"));
+    const node = routeMap.querySelector(`.station[data-station="${stationId}"]`);
+    if (node) node.classList.add("is-active");
+
+    card.classList.add("is-open");
+    card.setAttribute("aria-hidden", "false");
+
+    const nodeRect = node?.getBoundingClientRect();
+    const cardWidth = card.offsetWidth || 320;
+    const cardHeight = card.offsetHeight || 160;
+    const fallbackX = Math.max(12, clientX - wrapRect.left + 14);
+    const fallbackY = Math.max(12, clientY - wrapRect.top + 14);
+
+    const baseX = nodeRect ? (nodeRect.left - wrapRect.left + (nodeRect.width / 2) - (cardWidth / 2)) : fallbackX;
+    const baseY = nodeRect ? (nodeRect.top - wrapRect.top + nodeRect.height + 14) : fallbackY;
+
+    const x = Math.min(wrapRect.width - cardWidth - 12, Math.max(12, baseX));
+    const y = Math.min(wrapRect.height - cardHeight - 12, Math.max(12, baseY));
+
+    card.style.left = `${x}px`;
+    card.style.top = `${y}px`;
+  };
+
+  const closeCard = () => {
+    if (!card) return;
+    card.classList.remove("is-open");
+    card.setAttribute("aria-hidden", "true");
+    routeMap.querySelectorAll(".station.is-active").forEach(el => el.classList.remove("is-active"));
+  };
+
+  routeMap.querySelectorAll(".station").forEach((node) => {
+    const id = node.getAttribute("data-station");
+
+    node.addEventListener("click", (e) => {
+      openCard(id, e.clientX, e.clientY);
+    });
+
+    // Click only interaction
+  });
+
+  cardClose?.addEventListener("click", closeCard);
+  document.addEventListener("click", (e) => {
+    const isStation = e.target.closest && e.target.closest(".station");
+    const isCard = e.target.closest && e.target.closest("#stationCard");
+    if (!isStation && !isCard) closeCard();
+  });
 }
 
 // Modal triggers

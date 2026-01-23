@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Marketing Analytics</title>
-  <meta name="description" content="Marketing Analytics" />
+  <title>Contact</title>
+  <meta name="description" content="Contact" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Actor&display=swap" rel="stylesheet">
@@ -17,24 +17,39 @@
         <img src="images/logo.png" alt="Data 14 Logo" class="header-logo">
       </a>
       <nav class="nav">
-        <a href="index.html#services" class="nav-strong">Services</a>
-        <a href="index.html#work" class="nav-strong">Work</a>
-        <a href="https://calendar.app.google/YaRjgie3NBDr8Vaf8" class="nav-cta" target="_blank" rel="noopener">Book a Call</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Work</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
     <div class="mobile-nav" id="mobileNav">
       <a href="index.html#services">Services</a>
       <a href="index.html#work">Work</a>
-      <a href="https://calendar.app.google/YaRjgie3NBDr8Vaf8" target="_blank" rel="noopener">Book a Call</a>
+      <a href="contact.html">Contact</a>
     </div>
   </header>
 
   <main>
     <section class="section">
       <div class="container">
-        <h1>Marketing Analytics</h1>
-        <p class="muted">More details coming soon.</p>
+        <h1>Contact</h1>
+        <p class="muted">Send a quick note and we’ll get back to you.</p>
+        <form class="form" action="mailto:mustafa.elnagary@gmail.com" method="post" enctype="text/plain">
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <button class="btn" type="submit">Send Message</button>
+        </form>
       </div>
     </section>
   </main>
