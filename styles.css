@@ -67,7 +67,7 @@ a{ color:inherit; text-decoration:none; }
   display: block;
   padding: 10px 18px;
   color: var(--header);
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.02em;
   opacity: 1;
   white-space: nowrap;
@@ -77,7 +77,7 @@ a{ color:inherit; text-decoration:none; }
   background: #f3f7ff;
 }
 
-.dropdown:hover > .dropdown-menu{
+.dropdown-menu.is-open{
   display: block;
 }
 
@@ -91,8 +91,22 @@ a{ color:inherit; text-decoration:none; }
   margin-left: 6px;
 }
 
-.dropdown-sub:hover > .dropdown-menu-right{
+.dropdown-menu-right.is-open{
   display: block;
+}
+
+.dropdown-sub > a{
+  position: relative;
+  padding-right: 28px;
+}
+.dropdown-sub > a::after{
+  content: "▸";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--header);
+  font-size: 14px;
 }
 
 .menu-btn{

@@ -19,11 +19,11 @@
       <nav class="nav">
         <a href="index.html#top" class="nav-strong">Home</a>
         <div class="nav-item dropdown">
-          <a href="index.html#services" class="nav-strong">Services</a>
+          <a href="index.html#services" class="nav-strong dropdown-toggle" aria-expanded="false">Services</a>
           <div class="dropdown-menu">
             <a href="index.html#services">Power BI Delivery Track</a>
             <div class="dropdown-sub">
-              <a href="index.html#services">Specialty Performance Track</a>
+              <a href="index.html#services" class="dropdown-sub-toggle" aria-expanded="false">Specialty Performance Track</a>
               <div class="dropdown-menu dropdown-menu-right">
                 <a href="healthcare-supply-chain-analytics.html">Healthcare Supply Chain Analytics</a>
                 <a href="marketing-analytics.html">Marketing Performance Analytics</a>
@@ -45,10 +45,147 @@
   </header>
 
   <main>
-    <section class="section">
+    <section class="hero-map section">
       <div class="container">
-        <h1>Marketing Analytics</h1>
-        <p class="muted">More details coming soon.</p>
+        <div class="hero-map__header">
+          <h2 class="hero-map__title">Marketing Performance Analytics built as a connected system</h2>
+          <p class="hero-map__subtitle">We turn marketing data into one source of truth that drives decisions, not just reporting.</p>
+          <p class="hero-map__subtitle">Follow our four-station roadmap to move from clean tracking to confident optimization.</p>
+        </div>
+
+        <div class="hero-map__wrap">
+          <svg
+            id="marketingRouteMap"
+            class="route-map"
+            viewBox="0 0 1600 720"
+            role="img"
+            aria-label="Marketing analytics journey map"
+          >
+            <defs>
+              <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#003d88"></stop>
+                <stop offset="1" stop-color="#FCBB72"></stop>
+              </linearGradient>
+
+              <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#003d88" flood-opacity="0.14"/>
+              </filter>
+
+              <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <path
+              d="
+                M 120 220
+                L 1360 220
+                Q 1500 370 1360 520
+                L 150 520
+              "
+              fill="none"
+              stroke="#D9DEE6"
+              stroke-width="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="
+                M 120 220
+                L 1360 220
+                Q 1500 370 1360 520
+                L 150 520
+              "
+              fill="none"
+              stroke="#EEF1F6"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              opacity="0.95"
+            />
+
+            <g id="train" filter="url(#softShadow)">
+              <rect x="30" y="182" rx="18" ry="18" width="150" height="56" fill="#003d88" opacity="0.12"></rect>
+              <path d="M 40 190 H 160 C 182 190 195 204 195 220 C 195 236 182 250 160 250 H 40 Z" fill="#003d88"/>
+              <path d="M 40 190 H 150 C 168 190 178 199 182 210 C 170 217 156 222 140 222 H 40 Z" fill="#FCBB72" opacity="0.85"/>
+              <rect x="62" y="205" width="22" height="14" rx="4" fill="#EEF1F6" opacity="0.9"></rect>
+              <rect x="90" y="205" width="22" height="14" rx="4" fill="#EEF1F6" opacity="0.9"></rect>
+              <rect x="118" y="205" width="22" height="14" rx="4" fill="#EEF1F6" opacity="0.9"></rect>
+              <path d="M 160 190 C 186 190 200 205 200 220 C 200 235 186 250 160 250 Z" fill="#003d88"/>
+              <path d="M 160 195 C 180 195 191 207 191 220 C 191 233 180 245 160 245 Z" fill="#EEF1F6" opacity="0.14"/>
+            </g>
+
+            <g class="station" data-station="1" transform="translate(360,220)">
+              <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+              <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+              <circle r="22" fill="#003d88"></circle>
+              <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">1</text>
+              <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+                <tspan x="0" dy="0">Tracking &amp; Campaign</tspan>
+                <tspan x="0" dy="20">Taxonomy Foundation</tspan>
+              </text>
+              <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+                <tspan x="0" dy="0">Fix definitions and tracking</tspan>
+              </text>
+            </g>
+
+            <g class="station" data-station="2" transform="translate(1240,220)">
+              <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+              <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+              <circle r="22" fill="#003d88"></circle>
+              <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">2</text>
+              <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+                <tspan x="0" dy="0">Data Integration &amp;</tspan>
+                <tspan x="0" dy="20">Unified Marketing Model</tspan>
+              </text>
+              <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+                <tspan x="0" dy="0">Connect and normalize data</tspan>
+              </text>
+            </g>
+
+            <g class="station" data-station="3" transform="translate(1260,520)">
+              <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+              <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+              <circle r="22" fill="#003d88"></circle>
+              <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">3</text>
+              <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+                <tspan x="0" dy="0">Performance Reporting</tspan>
+                <tspan x="0" dy="20">&amp; Funnel Diagnostics</tspan>
+              </text>
+              <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+                <tspan x="0" dy="0">Explain performance drivers</tspan>
+              </text>
+            </g>
+
+            <g class="station" data-station="4" transform="translate(420,520)">
+              <circle r="28" fill="white" filter="url(#softShadow)"></circle>
+              <circle r="28" fill="none" stroke="url(#ringGrad)" stroke-width="6"></circle>
+              <circle r="22" fill="#003d88"></circle>
+              <text class="station-num" text-anchor="middle" dominant-baseline="central" y="1">4</text>
+              <text class="station-label station-title" text-anchor="middle" x="0" y="64">
+                <tspan x="0" dy="0">Optimization Engine</tspan>
+                <tspan x="0" dy="20">&amp; Budget Intelligence</tspan>
+              </text>
+              <text class="station-label station-subtitle" text-anchor="middle" x="0" y="108">
+                <tspan x="0" dy="0">Actionable budget guidance</tspan>
+              </text>
+            </g>
+          </svg>
+
+          <div id="stationCard" class="station-card" aria-hidden="true">
+            <div class="station-card__meta">
+              <span id="cardKicker" class="station-card__kicker">Station</span>
+              <button id="cardClose" class="station-card__close" aria-label="Close">✕</button>
+            </div>
+            <h3 id="cardTitle" class="station-card__title">Title</h3>
+            <p id="cardText" class="station-card__text">Description</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
